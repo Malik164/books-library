@@ -1,0 +1,9 @@
+<%-include('./partials/header') %>
+  <%-include('./partials/nav') %>
+    <h2 class="text-success mt-2">
+      <%=(locals.query?.title!=''&&locals.query?.title!=null)?'Found Books':'Recent Books'%>
+    </h2>
+    <%-include ('./partials/_book_card') %> 
+
+
+<%-include('./partials/footer') %>

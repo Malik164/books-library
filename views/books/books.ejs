@@ -1,0 +1,70 @@
+<%-include('../partials/header') %>
+<%-include('../partials/nav') %>
+<%-include('../partials/_splie') %>
+  
+    <h2 class="text-success mt-2">All Books</h2>
+    <% if (books.length>0) { %>
+      <div class="select-box w-25 ms-auto my-3 shadow-lg  mb-3 p-2 bg-white rounded">
+        <form action="/books/" method="post" id="sortForm">
+          <label for="filter" class="mb-1"><b>Sort by</b></label>
+          <select name="filter" id="filter" class="form-control">
+            <option value="createdAt" selected>Date Created</option>
+            <option value="title">Title</option>
+            <option value="pages">Pages</option>
+            <option value="author">Author</option>
+          </select>
+        </form>
+      </div>
+      <div class="slider-box mb-5">
+        <div class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <% books.forEach(book => { %>
+                <li class="splide__slide">
+                  <div class="book-card">
+                    <div class="card">
+                      <div class="content">
+                        <div class="front">
+                          <img src="<%=book.image_path%>" alt="<%=book.title %>">
+                          <b class="text-muted"><%=(book.title.length>20)? book.title.slice(0,20)+'...':book.title %> </b>
+                        </div>
+                        <div class="back text-center p-3">
+                          <h4 class="text-success"><%=book.title%></h4>
+                          <p><b>Book by: </b><%= book.author %> </p>
+                          <a href="/books/<%=book._id%>" class="btn btn-success my-2">View Book</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% }) %>
+        
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% } else {%>
+        <p>No Books Found!</p>
+      <% } %> 
+
+
+<%-include('../partials/footer') %>
+<script defer>
+  document.addEventListener( 'DOMContentLoaded', function() {
+    // submit form when an option is selected
+    filter.addEventListener('blur',()=>{
+      sortForm.submit()
+    })
+
+    //splide configuration
+    const splide = new Splide( '.splide', {
+      type   : 'loop',
+      perPage: 4,
+      perMove: 1,
+    } );
+
+    splide.mount();
+
+  } );
+
+</script>

@@ -1,0 +1,42 @@
+<!-- show error message if there is any -->
+<% if (err_msg!="" ) { %>
+    <div class="alert alert-danger alert-box w-50" role="alert">
+      <p>
+        <%=err_msg%>&nbsp;&nbsp;&nbsp;&nbsp;
+      </p>
+      <button class="btn-close" onclick="this.parentElement.style.display='none'"></button>
+    </div>
+    
+    <% } %>
+      <!-- show success message if there is any -->
+      <% if (success_msg!="" ) { %>
+        <div class="alert alert-success alert-box w-50 " role="alert">
+          <p>
+            <%=success_msg%>
+          </p>
+          <button class="btn-close" onclick="this.parentElement.style.display='none'"></button>
+        </div>
+  
+        <% } %>
+  
+          <!-- show error message if there is any -->
+          <% if (error!="" ) { %>
+            <div class="alert alert-danger alert-box  w-50" role="alert" >
+              <p>
+                <%=error%>
+              </p>
+              <button class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+            </div>
+  
+            <% } %>
+
+            <script>
+              let alertBox= document.querySelector('.alert-box')
+              if (alertBox) {
+                setTimeout(()=>{
+                    alertBox.style.display='none'
+                },2000)
+                
+              }
+              
+            </script>

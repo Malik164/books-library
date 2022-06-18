@@ -1,0 +1,30 @@
+<%-include('../partials/header') %> 
+<%-include('../partials/nav') %> 
+
+    <div class="row g-3 my-2 p-4">
+        <div class="col-md-8">
+            <h2 class="text-success"><%=book.title%> </h2>
+            <p><b>Author: </b><%= book.author %> </p>
+            <p><b>Pages: </b><%= book.pages %> </p>
+                <% if (user) { %>
+                    <a href="/books/edit/<%=book._id%> " class="btn btn-success m-2">Edit Book</a>
+                <form action="/books/<%=book._id%>?_method=DELETE" method="post" >
+                   <button type="submit" class="btn btn-danger m-2">Delete Book</button>
+                </form>
+                 
+                <% } %>
+            
+        </div>
+        <div class="col-md-4">
+            <div class="img-box">
+                <img src="<%=book.image_path%>" alt="<%=book.title %>">
+            </div>
+        </div>
+        <div class="col-my-2">
+            <h5>Description: </h5>
+            <p style="word-wrap: normal;">
+                <%=book.description%> 
+            </p>
+        </div>
+    </div>
+<%-include('../partials/footer') %> 

@@ -1,0 +1,395 @@
+* {
+    box-sizing: border-box;
+  }
+  :root{
+    --primary-color:#195819;
+}
+nav{
+  box-shadow: 0px 3px 8px silver;
+}
+body{
+   width: 100vw;
+   position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  background: linear-gradient(-45deg,#f0f0f0 50%, transparent 50%);
+}
+/*  ------------------------loader css--------------- */
+  #loaderBox {
+    background: #f9f9f9;
+    position: fixed;
+    z-index: 99;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .loader-text {
+    color: var(--primary-color);
+    text-align: center;
+    font-family: sans-serif;
+  
+    margin-top: 1em;
+    font-size:1.4rem;
+    position: relative;
+  }
+  
+  
+  .loader-text:after {
+    position: absolute;
+    content: "";
+    -webkit-animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+    animation: Dots 2s cubic-bezier(0, .39, 1, .68) infinite;
+  }
+  
+  
+  .book {
+    border: 4px solid var(--primary-color);
+    width: 60px;
+    height: 45px;
+    position: relative;
+    perspective: 150px;
+  }
+  
+  .page {
+    display: block;
+    width: 30px;
+    height: 45px;
+    border: 4px solid limegreen;
+    border-left: 1px solid limegreen;
+    margin: 0;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    overflow: hidden;
+    background: #195819;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+  
+  .book .page:nth-child(1) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+  }
+  
+  .book .page:nth-child(2) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+  }
+  
+  .book .page:nth-child(3) {
+    -webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+    animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+  }
+  
+  
+  /* Page turn */
+  
+  @-webkit-keyframes pageTurn {
+    0% {
+      -webkit-transform: rotateY( 0deg);
+      transform: rotateY( 0deg);
+    }
+    20% {
+      background: var(--primary-color);
+    }
+    40% {
+      background: var(--primary-color);
+      -webkit-transform: rotateY( -180deg);
+      transform: rotateY( -180deg);
+    }
+    100% {
+      background: var(--primary-color);
+      -webkit-transform: rotateY( -180deg);
+      transform: rotateY( -180deg);
+    }
+  }
+  
+  @keyframes pageTurn {
+    0% {
+      transform: rotateY( 0deg);
+    }
+    20% {
+      background:var(--primary-color);
+    }
+    40% {
+      background: var(--primary-color);
+      transform: rotateY( -180deg);
+    }
+    100% {
+      background: var(--primary-color);
+      transform: rotateY( -180deg);
+    }
+  }
+  
+  
+  /* Dots */
+  
+  @-webkit-keyframes Dots {
+    0% {
+      content: "";
+    }
+    33% {
+      content: ".";
+    }
+    66% {
+      content: "..";
+    }
+    100% {
+      content: "...";
+    }
+  }
+  
+  @keyframes Dots {
+    0% {
+      content: "";
+    }
+    33% {
+      content: ".";
+    }
+    66% {
+      content: "..";
+    }
+    100% {
+      content: "...";
+    }
+  }
+
+  /* user dropdown */
+  .dropdown {
+    cursor: pointer;
+    width: 50px;
+    line-height: 50px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 1;
+    transform: perspective(1000px);
+  }
+  
+  .dropdown-menu {
+    background-color: #f9f9f9;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    text-align: center;
+    top: 0;
+    visibility: hidden;
+  }
+  
+  .dropdown-menu li:first-child {
+    cursor: default;
+  }
+  
+  .dropdown-menu a {
+    color: #000;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+  }
+  
+  .dropdown-menu a:hover {
+    background: #ba68c8;
+    color: #fff;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    background: #7b1fa2;
+    opacity: 1 !important;
+    visibility: visible;
+    top: 100%;
+    width: 100%;
+    -webkit-transition: all .5s, background, 2s .5s linear;
+    transition: all .5s, background 2s .5s linear;
+  }
+  
+
+  /* book form css */
+  .book-form , footer{
+    background-color: #f9f9f9;
+  }
+
+
+  footer{
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    
+    margin-top: auto;
+    justify-self: end !important; 
+  }
+  .filepond--drop-label {
+    color: var(--primary-color);
+  }
+  .filepond--root, .filepond--item-panel, .filepond--panel-root  {
+    max-height:25em !important;
+}
+.file-box{
+  overflow: hidden;
+}
+
+/* book card css */
+
+ 
+.filepond--item , .filepond--image-preview-wrapper {
+  max-height: 25em !important;
+}
+
+.book-card img, .img-box img{
+  cursor: pointer;
+  display: block;
+  max-width: 100%;
+  margin: auto;
+  max-height: 18rem;
+  object-fit: cover;
+}
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.card {
+  min-height: 20rem;
+  perspective: 500px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.116);
+
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .content {
+  transform: rotateY( 180deg ) ;
+  transition: transform 0.5s;
+}
+
+.front,
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #f9f9f9;
+  text-align: center;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  flex-direction: column;
+  background: #f9f9f9;
+  transform: rotateY( 180deg );
+}
+
+/* user sign-in css
+ */
+ .main{
+  width: 40vw;
+  margin:2rem auto;
+	height:70vh;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 10px;
+	box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.212);
+}
+#chk{
+	display: none;
+}
+.login{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+.main label{
+	color: #fff;
+	font-size: 2.4rem;
+	justify-content: center;
+	display: flex;
+	/* margin: 60px; */
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.main .sign-in label{
+  margin: 3em;
+}
+.main input{
+  width: 60%;
+	height: 20px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 1em;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.main button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: var(--primary-color);
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+.main button:hover{
+	background:rgb(10, 97, 10);
+}
+.sign-in{
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.sign-in label{
+	color: var(--primary-color);
+	transform: scale(.6);
+}
+
+#chk:checked ~ .sign-in{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .sign-in label{
+	transform: scale(1);	
+}
+#chk:checked ~ .login label{
+	transform: scale(.6);
+}
+
+/* alert box css */
+.alert-box{
+  height: 3.5rem;
+  max-width: fit-content;
+  /* margin: 10px auto; */
+  position: fixed;
+  bottom: 10px;
+  left: 2em;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+}
